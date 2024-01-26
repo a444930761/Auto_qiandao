@@ -32,4 +32,4 @@ jd_sign(cookie_002)
 time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 with open('test.text', 'a+', encoding='utf8') as f:
     f.write(f"执行完成,执行时间：{time}" + '\n')
-print("---=执行完成=---")
+print(f"执行完成,执行时间：{time}")
