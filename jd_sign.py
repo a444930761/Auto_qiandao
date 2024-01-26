@@ -2,9 +2,6 @@ import json
 import os
 import http.client
 
-cookie_001 = os.environ.get("JD_COOKIE_001")
-cookie_002 = os.environ.get("JD_COOKIE_002")
-
 
 def sign_jd(cookie):
     conn = http.client.HTTPSConnection("api.m.jd.com")
@@ -26,5 +23,7 @@ def sign_jd(cookie):
     print(response_json.get('data').get('dailyAward'))
 
 
+cookie_001 = os.environ.get("JD_COOKIE_001")
+cookie_002 = os.environ.get("JD_COOKIE_002")
 sign_jd(cookie_001)
 sign_jd(cookie_002)
