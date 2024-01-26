@@ -2,8 +2,8 @@ import json
 import os
 import http.client
 
-cookie_001 = os.environ.get("JD_COOKIE_001")
-cookie_002 = os.environ.get("JD_COOKIE_002")
+JD_COOKIE_001 = os.environ.get("JD_COOKIE_001")
+JD_COOKIE_002 = os.environ.get("JD_COOKIE_002")
 
 conn = http.client.HTTPSConnection("api.m.jd.com")
 url = (
@@ -14,7 +14,7 @@ url = (
     "=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&openudid=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&jsonp"
     "=jsonp_1645885800574_58482")
 headers_001 = {
-    'Cookie': cookie_001
+    'Cookie': JD_COOKIE_001
 }
 conn.request("POST", url=url, headers=headers_001)
 res = conn.getresponse()
@@ -24,7 +24,7 @@ response_json = json.loads(json_str)
 print(response_json.get('data').get('dailyAward'))
 
 headers_002 = {
-    'Cookie': cookie_001
+    'Cookie': JD_COOKIE_002
 }
 conn.request("POST", url=url, headers=headers_002)
 res = conn.getresponse()
