@@ -25,4 +25,4 @@ jobs:
       run: |
         python jd_sign.py
       env:
-        cookie_001: ${{ secrets.JD_COOKIE_001 }}
+        JD_COOKIE_001: ${{ secrets.JD_COOKIE_001 }}
