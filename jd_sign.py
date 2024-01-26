@@ -1,6 +1,7 @@
 import json
 import os
 import http.client
+import datetime
 
 
 def jd_sign(cookie):
@@ -28,4 +29,7 @@ cookie_002 = os.environ.get("JD_COOKIE_002")
 
 jd_sign(cookie_001)
 jd_sign(cookie_002)
+
+time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print("---=执行完成=---")
+print(f"执行完成,执行时间：{time}")
