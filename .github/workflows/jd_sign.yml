@@ -5,7 +5,7 @@ on:
   schedule:
   # 此处是UTC时间，对应北京时间早八点
   - cron: "32 * * * *"
-  workflow_dispatch :
+  
 jobs:
   build:
     runs-on: ubuntu-latest
