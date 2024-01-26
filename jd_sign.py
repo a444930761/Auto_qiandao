@@ -28,4 +28,4 @@ def jd_sign(cookie):
 
 jd_sign(cookie_001)
 jd_sign(cookie_002)
-print("---=执行完成=---")
+print("---=执行完成=----")
