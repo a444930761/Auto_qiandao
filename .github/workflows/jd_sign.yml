@@ -1,5 +1,5 @@
 
-name: 京东签到avtions设置文件01
+name: 启动京东自动签到
 
 on:
   schedule:
