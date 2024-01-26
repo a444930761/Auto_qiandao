@@ -4,7 +4,7 @@ name: 京东签到avtions设置文件
 on:
   schedule:
   # 此处是UTC时间，对应北京时间早八点
-  - cron: "00 00 * * *"
+  - cron: "30 08 * * *"
   workflow_dispatch:
   
 jobs:
