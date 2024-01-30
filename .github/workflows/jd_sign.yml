@@ -3,8 +3,8 @@ name: 启动京东自动签到
 
 on:
   schedule:
-  # 此处是UTC时间，对应北京时间早八点
-  - cron: "0 1 * * *"
+  # UTC时间+8 = 中国执行时间凌晨两点
+  - cron: "0 18 * * *"
   workflow_dispatch:
 jobs:
   build:
