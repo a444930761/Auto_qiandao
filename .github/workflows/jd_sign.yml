@@ -33,4 +33,4 @@ jobs:
       env:
         JD_COOKIE_001: ${{ secrets.JD_COOKIE_my }}
         JD_COOKIE_002: ${{ secrets.JD_COOKIE_002 }}
-        iku_psd: ${{ secrets.IKU_PSD }}
+        IKU_PSD: ${{ secrets.IKU_PSD }}
