@@ -34,10 +34,11 @@ def iku_signin(username, password):
 
 cookie_001 = os.environ.get("JD_COOKIE_001")
 cookie_002 = os.environ.get("JD_COOKIE_002")
+iku_psd = os.environ.get("IKU_PSD")
 jd_signin(cookie_001)
 jd_signin(cookie_002)
 
-iku_signin('a2401193521@qq.com', 'qwer1122')
+iku_signin('a2401193521@qq.com', f'{iku_psd}')
 
 time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"--=执行完成=--，执行时间：{time}")
