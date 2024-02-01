@@ -11,7 +11,9 @@ def jd_signin(cookie):
            "%22%3A%22-1%22%2C%22rnVersion%22%3A%223.9%22%7D&appid=ld&client=apple&clientVersion=10.0.4&networkType"
            "=wifi&osVersion=14.8.1&uuid=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&openudid"
            "=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&jsonp=jsonp_1645885800574_58482")
-    headers = {'Cookie': cookie}
+    headers = {"Cookie": cookie,
+               "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHT"
+                             "ML, like Gecko)Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0"}
     r = requests.post(url=url, headers=headers)
     print(r.text)
 
