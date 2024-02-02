@@ -25,13 +25,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-# 判断触发事件的用户是否是仓库的所有者。如果判断为真（即触发事件的用户是仓库所有者），则执行该工作流程中的工作；如果判断为假，则跳过该工作流程中的工作，不执行。
-# if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
       - name: Checkout
         uses: actions/checkout@master
+
       - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -45,9 +45,6 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
           cp .config ./lede/.config
           mv ./lede/* ./
-# - name: Install netwizard
-#   run: |
-#     echo "src-git opentopd  https://github.com/sirpdboy/sirpdboy-package" >> ./feeds.conf.default
 
       - name: Update feeds
         run: |
@@ -61,11 +58,10 @@ jobs:
           make download -j8
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
-      - name: Compile firmware _Chinese:BianYiGuJian
+      - name: Compile firmware
         run: |
-          sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
           echo -e "$(nproc) thread build."
-          make -j$(nproc)
+          make -j$(nproc) V=s
       - name : Upload artifact
         uses: actions/upload-artifact@master
         with:
