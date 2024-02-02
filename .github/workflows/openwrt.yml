@@ -45,9 +45,9 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
           cp .config ./lede/.config
           mv ./lede/* ./
-# - name: Install Helloword
-#   run: |
-#     echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
+      - name: Install netwizard
+        run: |
+          echo "src-git opentopd  https://github.com/sirpdboy/sirpdboy-package" >> ./feeds.conf.default
 # - name: Install OpenClash
 #   run: |
 #     mkdir package/luci-app-openclash
