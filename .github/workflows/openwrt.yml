@@ -75,6 +75,7 @@ jobs:
           find dl -size -1024c -exec rm -f {} \;
       - name: Compile firmware _Chinese:BianYiGuJian
         run: |
+          sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
           echo -e "$(nproc) thread build."
           make -j$(nproc)
       - name : Upload artifact
