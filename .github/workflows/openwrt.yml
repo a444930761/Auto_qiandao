@@ -45,9 +45,9 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
           cp .config ./lede/.config
           mv ./lede/* ./
-      - name: Install netwizard
-        run: |
-          echo "src-git opentopd  https://github.com/sirpdboy/sirpdboy-package" >> ./feeds.conf.default
+# - name: Install netwizard
+#   run: |
+#     echo "src-git opentopd  https://github.com/sirpdboy/sirpdboy-package" >> ./feeds.conf.default
 
       - name: Update feeds
         run: |
