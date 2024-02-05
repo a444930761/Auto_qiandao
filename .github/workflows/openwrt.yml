@@ -17,6 +17,8 @@ on:
       comment: 
         description: '备注'
         required: true
+        default: '默认备注'
+        
   watch:
     types: started
 
