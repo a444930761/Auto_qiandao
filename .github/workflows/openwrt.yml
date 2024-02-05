@@ -8,18 +8,11 @@
 
 
 name: Bulid_OpenWrt
-
 on:
-  # push:
-  #   branches: 
-  #     - master
-
   schedule:
-# UTC时间晚上19:42执行，对应中国时间03:42执行
-    - cron: "42 19 * * *"
-
+  # 中国时间的凌晨5:42执行
+  - cron: "42 21 * * *"
   workflow_dispatch:
-
   watch:
     types: started
 
