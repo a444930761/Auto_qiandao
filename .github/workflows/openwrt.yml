@@ -13,6 +13,10 @@ on:
   # 中国时间的凌晨5:42执行
   - cron: "42 21 * * *"
   workflow_dispatch:
+    inputs:
+      comment: 
+        description: '备注'
+        required: true
   watch:
     types: started
 
