@@ -1,19 +1,13 @@
-
 name: Bulid_OpenWrt
 on:
   schedule:
-  # 中国时间的凌晨5:42执行
-  - cron: "42 21 * * *"
+    # 中国时间的凌晨5:42执行
+    - cron: "42 21 * * *"
   workflow_dispatch:
         
-# watch:
-#   types: started
-
 jobs:
   build:
     runs-on: ubuntu-20.04
-# if: github.event.repository.owner.id == github.event.sender.id
-# mv ./lede/* ./
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -34,16 +28,15 @@ jobs:
           cd ..
           cp .config ./lede/.config
 
-
       - name: Update feeds
         run: |
           cd lede
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-      - name: Costom configure file
+      - name: Copy custom configure file
         run: |
           cd lede
-          make defconfig
+          cp ../.config .config
       - name: Download package source code
         run: |
           cd lede
@@ -55,9 +48,8 @@ jobs:
           cd lede
           echo -e "$(nproc) thread build."
           make -j$(nproc) V=s
-      - name : Upload artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_firmware
-          path: /lede/bin/targets/
-          
+          path: lede/bin/targets/
