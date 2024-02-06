@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 # if: github.event.repository.owner.id == github.event.sender.id
-
+# mv ./lede/* ./
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -30,7 +30,7 @@ jobs:
         run: |
           git clone https://github.com/coolsnowwolf/lede lede
           cp .config ./lede/.config
-          mv ./lede/* ./
+
 
       - name: Update feeds
         run: |
