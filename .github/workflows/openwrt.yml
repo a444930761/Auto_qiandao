@@ -34,18 +34,22 @@ jobs:
 
       - name: Update feeds
         run: |
+          cd lede
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       - name: Costom configure file
         run: |
+          cd lede
           make defconfig
       - name: Download package source code
         run: |
+          cd lede
           make download -j8
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
       - name: Compile firmware
         run: |
+          cd lede
           echo -e "$(nproc) thread build."
           make -j$(nproc) V=s
       - name : Upload artifact
