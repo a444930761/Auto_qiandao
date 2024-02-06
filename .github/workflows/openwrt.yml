@@ -29,6 +29,9 @@ jobs:
       - name: Download lede
         run: |
           git clone https://github.com/coolsnowwolf/lede lede
+          cd ./lede
+          sudo rm -rf .config
+          cd ..
           cp .config ./lede/.config
 
 
