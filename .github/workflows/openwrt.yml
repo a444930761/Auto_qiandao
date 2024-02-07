@@ -47,6 +47,8 @@ jobs:
         run: |
           cd lede
           echo -e "$(nproc) thread build."
+          export TERM=xterm
+          make menuconfig
           make -j$(nproc) V=s
       - name: Upload artifact
         uses: actions/upload-artifact@master
