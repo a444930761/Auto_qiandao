@@ -1,8 +1,5 @@
 name: Bulid_OpenWrt
 on:
-  schedule:
-    # 中国时间的凌晨5:42执行
-    - cron: "42 21 * * *"
   workflow_dispatch:
         
 jobs:
