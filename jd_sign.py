@@ -32,7 +32,7 @@ def iku_signin(username, password):
     print(sign_res.json())
 
 
-cookie_001 = os.environ.get("JD_COOKIE_001")
+cookie_001 = os.environ.get("JD_COOKIE_MY")
 cookie_002 = os.environ.get("JD_COOKIE_002")
 iku_psd = os.environ.get("IKU_PSD")
 jd_signin(cookie_001)
