@@ -19,7 +19,7 @@ def jd_signin(cookie):
 
 
 def iku_signin(username, password):
-    login_url = "https://ikuuu.me/auth/login"
+    login_url = "https://ikuuu.pw/auth/login"
     data = {"email": f"{username}",
             "passwd": f"{password}",
             "code": ""}
