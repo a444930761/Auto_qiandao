@@ -8,6 +8,12 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def send_email():
+    sender_email = "3521850769@qq.com"
+    sender_password = "kbmhzyfrifhrdbbc"
+    receiver_email = "3521850769@qq.com"
+    subject = "GitHub Actions 发生错误"
+    body = f"您的 GitHub Actions 发生了错误，请尽快处理。{time.strftime("%Y-%m-%d")}"
+
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
