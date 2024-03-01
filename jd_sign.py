@@ -1,8 +1,32 @@
+# kbmhzyfrifhrdbbc
 import json
 import os
 import datetime
 import requests
-from utils.send__qq_email import send_email
+import smtplib
+import time
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+
+def send_email(subject, body):
+    sender_email = "3521850769@qq.com"
+    sender_password = "kbmhzyfrifhrdbbc"
+    receiver_email = "1774293824@qq.com"
+
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    message["Subject"] = subject
+    message.attach(MIMEText(body, "plain"))
+    server = smtplib.SMTP("smtp.qq.com", 587)
+    server.starttls()
+    server.login(sender_email, sender_password)
+    server.sendmail(sender_email, receiver_email, message.as_string())
+    print("邮件发送成功")
+
+
+send_email()
 
 
 def jd_signin(cookie):
@@ -38,10 +62,12 @@ iku_psd = os.environ.get("IKU_PSD")
 jd_signin(cookie_001)
 
 assert_data = iku_signin('a2401193521@qq.com', f'{iku_psd}')
-if str(assert_data) == "{'ret': 1, 'msg': '登录成功'}":
-    send_email()
-    print("发送成功邮件")
+if str(assert_data) != "{'ret': 1, 'msg': '登录成功'}":
+    subject = "GitHub Actions 发生错误"
+    body = f"您的 GitHub Actions 发生了错误，请尽快处理。{time.strftime("%Y-%m-%d")}"
+    send_email(subject, body)
+    print("发送告警邮件")
 else:
-    send_email() and print("发送失败邮件")
+    print("执行成功")
 time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"--=执行完成=--，执行时间：{time}")
