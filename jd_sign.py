@@ -64,9 +64,10 @@ iku_psd = os.environ.get("IKU_PSD")
 jd_signin(cookie_001)
 
 assert_data = iku_signin('a2401193521@qq.com', f'{iku_psd}')
-if str(assert_data) == '{'ret': 1, 'msg': '登录成功'}':
+if str(assert_data) == "{'ret': 1, 'msg': '登录成功'}":
     send_email()
+    print("发送成功邮件")
 else:
-    pass
+    send_email() and print("发送失败邮件")
 time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"--=执行完成=--，执行时间：{time}")
