@@ -1,36 +1,10 @@
 import json
 import os
 import datetime
-
 import requests
-import smtplib
-import time
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from utils.send__qq_email import send_email
 
-def send_email():
-    sender_email = "3521850769@qq.com"
-    sender_password = "kbmhzyfrifhrdbbc"
-    receiver_email = "3521850769@qq.com"
-    subject = "GitHub Actions 发生错误"
-    body = f"您的 GitHub Actions 发生了错误，请尽快处理。{time.strftime("%Y-%m-%d")}"
 
-    message = MIMEMultipart()
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    message["Subject"] = subject
-    message.attach(MIMEText(body, "plain"))
-    try:
-        server = smtplib.SMTP("smtp.qq.com", 587)
-        server.starttls()
-        server.login(sender_email, sender_password)
-        server.sendmail(sender_email, receiver_email, message.as_string())
-        print("邮件发送成功")
-    except Exception as e:
-        print("邮件发送失败")
-        print(e)
-    finally:
-        server.quit()
 def jd_signin(cookie):
     url = ("https://api.m.jd.com/client.action?functionId=signBeanAct&body=%7B%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A"
            "%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda"
