@@ -1,4 +1,3 @@
-# kbmhzyfrifhrdbbc
 import json
 import os
 import datetime
@@ -8,11 +7,15 @@ import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+JD_cookie = os.environ.get("JD_COOKIE_001")
+iku_psd = os.environ.get("IKU_PSD")
+email_pwd = os.environ.get("EMAIL_PASSWORD")
+
 
 def send_email(subject, body):
     sender_email = "3521850769@qq.com"
-    sender_password = "kbmhzyfrifhrdbbc"
-    receiver_email = "1774293824@qq.com"
+    sender_password = email_pwd
+    receiver_email = "3521850769@qq.com"
 
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -54,9 +57,7 @@ def iku_signin(username, password):
     return login_res.json()
 
 
-cookie_001 = os.environ.get("JD_COOKIE_001")
-iku_psd = os.environ.get("IKU_PSD")
-jd_signin(cookie_001)
+jd_signin(JD_cookie)
 
 assert_data = iku_signin('a2401193521@qq.com', f'{iku_psd}')
 if str(assert_data) != "{'ret': 1, 'msg': '登录成功'}":
