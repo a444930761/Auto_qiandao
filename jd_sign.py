@@ -12,6 +12,7 @@ iku_psd = os.environ.get("IKU_PSD")
 email_pwd = os.environ.get("EMAIL_PASSWORD")
 
 
+
 def send_email(subject, body):
     sender_email = "3521850769@qq.com"
     sender_password = email_pwd
@@ -30,15 +31,19 @@ def send_email(subject, body):
 
 
 def jd_signin(cookie):
-    url = ("https://api.m.jd.com/client.action?functionId=signBeanAct&body=%7B%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A"
-           "%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda"
-           "%22%3A%22-1%22%2C%22rnVersion%22%3A%223.9%22%7D&appid=ld&client=apple&clientVersion=10.0.4&networkType"
-           "=wifi&osVersion=14.8.1&uuid=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&openudid"
-           "=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&jsonp=jsonp_1645885800574_58482")
+    url = ("https://api.m.jd.com/client.action?functionId=signBeanAct&body=%7B%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%2"
+           "2-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A"
+           "%22-1%22%2C%22rnVersion%22%3A%223.9%22%7D&appid=ld&client=apple&clientVersion=10.0.4&networkType=wifi&osVer"
+           "sion=14.8.1&uuid=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6&openudid=3acd1f6361f86fc0a1bc23971b2e7bbe6197afb6"
+           "&jsonp=jsonp_1645885800574_58482")
     headers = {"Cookie": cookie,
                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHT"
                              "ML, like Gecko)Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0"}
     r = requests.post(url=url, headers=headers)
+    json_data = r.text.replace('jsonp_1645885800574_58482(', '').rstrip(');')
+    data = json.loads(json_data)
+    title = data['data']['dailyAward']['title']
+    print(type(r))
     print(r.text)
 
 
@@ -66,6 +71,6 @@ if str(assert_data) != "{'ret': 1, 'msg': '登录成功'}":
     send_email(subject, body)
     print("发送告警邮件")
 else:
-    print("执行成功")
-time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(f"--=执行完成=--，执行时间：{time}")
+    pass
+time_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(f"--=执行完成=--，执行时间：{time_now}")
