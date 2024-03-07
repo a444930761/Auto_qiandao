@@ -42,9 +42,7 @@ def jd_signin(cookie):
     r = requests.post(url=url, headers=headers)
     json_data = r.text.replace('jsonp_1645885800574_58482(', '').rstrip(');')
     data = json.loads(json_data)
-    title = data['data']['dailyAward']['title']
-    print(type(r))
-    print(r.text)
+    print(data)
 
 
 def iku_signin(username, password):
