@@ -51,12 +51,12 @@ def iku_signin(username, password):
             "passwd": f"{password}",
             "code": ""}
     login_res = requests.post(login_url, data)
-    print(str(login_res))
+    print(str(login_res.json()))
     cookie = login_res.cookies
     sing_headers = {"cookie": "; ".join([f"{name}={value}" for name, value in cookie.items()])}
     sign_url = "https://ikuuu.pw/user/checkin"
     sign_res = requests.post(sign_url, headers=sing_headers, data={})
-    print(str(sign_res))
+    print(str(sign_res.json()))
     return login_res.json()
 
 
