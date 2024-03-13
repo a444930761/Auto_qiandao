@@ -8,6 +8,7 @@ import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 JD_cookie = os.environ.get("JD_COOKIE_001")
 iku_psd = os.environ.get("IKU_PSD")
 email_pwd = os.environ.get("EMAIL_PASSWORD")
