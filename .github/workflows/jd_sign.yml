@@ -31,6 +31,4 @@ jobs:
       run: |
         python jd_sign.py
       env:
-        # JD_COOKIE_001: ${{ secrets.JD_COOKIE_my }}
-        # JD_COOKIE_002: ${{ secrets.JD_COOKIE_002 }}
         IKU_PSD: ${{ secrets.IKU_PSD }}
