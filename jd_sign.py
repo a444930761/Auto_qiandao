@@ -9,9 +9,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-JD_cookie = os.environ.get("JD_COOKIE_001")
+# JD_cookie = os.environ.get("JD_COOKIE_001")
 iku_psd = os.environ.get("IKU_PSD")
-email_pwd = os.environ.get("EMAIL_PASSWORD")
+# email_pwd = os.environ.get("EMAIL_PASSWORD")
 
 def send_email(subject, body):
     sender_email = "3521850769@qq.com"
