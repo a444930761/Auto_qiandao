@@ -31,4 +31,4 @@ jobs:
       run: |
         python jd_sign.py
       env:
-        IKU_PSD: ${{ secrets.IKU_PSD }}
+        IKU_PSD: ${{ vars.IKU_PSD }}
