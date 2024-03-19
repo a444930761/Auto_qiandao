@@ -65,23 +65,23 @@ def iku_signin(username, password):
     return login_res.json()
 
 
-title = jd_signin(JD_cookie)
-if str(title) not in ("签到成功，", "今天已签到，"):
-    subject = "GitHub Actions 运行异常"
-    body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
-    send_email(subject, body)
-    print("发送告警邮件")
-else:
-    print(f"京东签到成功，签到时间:{time_now}")
+# title = jd_signin(JD_cookie)
+# if str(title) not in ("签到成功，", "今天已签到，"):
+#     subject = "GitHub Actions 运行异常"
+#     body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
+#     send_email(subject, body)
+#     print("发送告警邮件")
+# else:
+#     print(f"京东签到成功，签到时间:{time_now}")
 
-assert_data = iku_signin('a2401193521@qq.com', f'{iku_psd}')
+assert_data = iku_signin('liwei_gz@hotmail.com', f'{iku_psd}')
 
-if str(assert_data) != "{'ret': 1, 'msg': '登录成功'}":
-    subject = "GitHub Actions 运行异常"
-    body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
-    send_email(subject, body)
-    print("发送告警邮件")
-else:
-    pass
+# if str(assert_data) != "{'ret': 1, 'msg': '登录成功'}":
+#     subject = "GitHub Actions 运行异常"
+#     body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
+#     send_email(subject, body)
+#     print("发送告警邮件")
+# else:
+#     pass
 
 print(f"--=执行完成=--，执行时间：{time_now}")
